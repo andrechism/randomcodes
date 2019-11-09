@@ -7,6 +7,8 @@ void startmenu();
 void vetoroption();
 void exercicioAlgoritimos04();
 	void exercicioAlgoritimos04q01();
+	void exercicioAlgoritimos04q02();
+	
 main() {
 	
 	startmenu();
@@ -78,22 +80,24 @@ void exercicioAlgoritimos04(){
 	int exercicioAlgoritimos04menuOption;
 	
 	printf("\nSelect an option: ");
-	printf("\n1 - Escreva um algoritmo que leia 50 valores e encontre o maior e o menor deles. Mostre o resultado.");
-	printf("\n2 - Voltar");
-	printf("\n3 - ");
+	printf("\n1 - Voltar");
+	printf("\n\n2 - Escreva um algoritmo que leia 50 valores e encontre o maior e o menor deles. Mostre o resultado.");
+	printf("\n\n3 - Faca um algoritmo para ler uma quantidade e a seguir ler esta quantidade de numeros. \n    Calcule a media aritmetica dos numeros lidos, a quantidade de numeros positivos, \n    a quantidade de numeros negativos e o percentual de numeros negativos e positivos. Mostre os resultados.");
+	
 	exercicioAlgoritimos04menuOption = toupper(getch());
 	
 	switch (exercicioAlgoritimos04menuOption) {
 		case '1':
 			system("cls");
-			exercicioAlgoritimos04q01();
+			main();
 		break;
 		case '2':
 			system("cls");
-			main();
+			exercicioAlgoritimos04q01();
 		break;
 		case '3':
-			printf("\nlast option");
+			system("cls");
+			exercicioAlgoritimos04q02();
 		break;
 		default:
 			system("cls");
@@ -130,7 +134,51 @@ void exercicioAlgoritimos04q01(){
 	exercicioAlgoritimos04();
 }
 
-
+void exercicioAlgoritimos04q02(){
+	/*
+	Faça um algoritmo para ler uma quantidade e a seguir ler esta quantidade de
+	números. Calcule a média aritmética dos números lidos, a quantidade de
+	números positivos, a quantidade de números negativos e o percentual de
+	números negativos e positivos. Mostre os resultados.
+	*/
+	
+	int i;
+	float qtdNumeros, atualNumeros, somaNumeros = 0, qtdPositivos = 0, qtdNegativos = 0, perPositivos, perNegativos, mediaNumeros;
+	
+	printf("Digite a quantidade de numeros a ser lidos: ");
+	scanf("%f", &qtdNumeros);
+	
+	printf("Digite os numeros: \n");
+	
+	for (i = 0; i < qtdNumeros; i++) {
+		scanf("%f", &atualNumeros);
+			
+		somaNumeros += atualNumeros;
+			
+			if (atualNumeros > 0) {
+				qtdPositivos++;
+			}
+			else if (atualNumeros < 0) {
+				qtdNegativos++;
+			}
+	}
+	
+	mediaNumeros = somaNumeros / qtdNumeros;
+	perPositivos = (qtdPositivos / qtdNumeros) * 100;
+	perNegativos = (qtdNegativos / qtdNumeros) * 100;
+	
+	printf("\nMedia aritmetica dos numeros lidos: %.1f", mediaNumeros);
+	printf("\nQuantidade de numeros positivos: %.f", qtdPositivos);
+	printf("\nPercentual de numeros positivos: %.1f%%", perPositivos);
+	printf("\nQuantidade de numeros negativos: %.f", qtdNegativos);
+	printf("\nPercentual de numeros negativos: %.1f%%", perNegativos);
+	printf("\n\n");
+	
+	system("pause");
+	system("cls");
+	exercicioAlgoritimos04();
+	
+}
 
 
 
